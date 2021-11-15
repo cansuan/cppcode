@@ -1,2 +1,2 @@
 # cpptraning
-The training code is my specific solutions to some training tasks.
+The cpp code is my specific solutions to some cpp course assignments.
