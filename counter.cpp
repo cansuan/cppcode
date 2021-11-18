@@ -9,7 +9,7 @@ const double PENNY = 0.01;
 int main()
 {
     int quarters,dimes,nickels,pennies;
-    double monetary_value;
+    double monetary_value,fractional_value;
     //Get the number of coins from the user
     cout<<"Please enter the number of coins:"<<endl;
     cout<<endl;
@@ -28,9 +28,10 @@ int main()
 
     //calculate monetary value of the coins in the format of dollars and remaining cents
     monetary_value = (quarters * QUARTER) + (dimes * DIME) + (nickels * NICKEL) + (pennies * PENNY);
-
-    //Calculate the fractional part and convert to a string
-    string cent_text = to_string(abs(monetary_value - (int)monetary_value));
+    ////Calculate the fractional part
+    fractional_value = abs(monetary_value - (int)monetary_value);
+    //convert fractional_value to a string
+    string cent_text = to_string(fractional_value);
 
     //Get only the part of the string after decimal point
     std::size_t found_dot = cent_text.find('.');
@@ -40,12 +41,24 @@ int main()
     //Remove trailing zeros at the end of the new string
     std::size_t found_zero = cent_text.find_last_not_of('0');
     if (found_zero!=std::string::npos)
-        cent_text.erase(found_zero+1);
+    {
+        cent_text.erase(found_zero+2);
+    }
     else
+    {
         cent_text.clear();
+    }
 
+    //Remove zeros after precision 2
+    std::size_t found_zero_second = cent_text.find_last_not_of('0');
+    if (found_zero_second!=std::string::npos)
+    {
+        if(cent_text.length() != 2)
+            cent_text.erase(found_zero_second+1);
+    }
     //Print the coins in the format of dollars and cents
-    cout<<"The total is "<<(int)monetary_value<<" dollars and "<<cent_text<<" cents"<<endl;
+    cout<<"The total is "<<(int)monetary_value<<" dollars and ";
+    cout<<cent_text<<" cents"<<endl;
 
     return 0;
 }
