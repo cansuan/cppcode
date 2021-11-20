@@ -1,2 +1,2 @@
 # cppcode
-The cpp code is my specific solutions to some cpp course assignments.
+The cpp code is my solutions to some cpp course assignments.
