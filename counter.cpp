@@ -26,11 +26,11 @@ int main()
     cin>>pennies;
     cout<<endl;
 
-    //calculate monetary value of the coins in the format of dollars and remaining cents
+    //Calculate monetary value of the coins in the format of dollars and remaining cents
     monetary_value = (quarters * QUARTER) + (dimes * DIME) + (nickels * NICKEL) + (pennies * PENNY);
-    ////Calculate the fractional part
+    //Calculate the fractional part
     fractional_value = abs(monetary_value - (int)monetary_value);
-    //convert fractional_value to a string
+    //Convert fractional_value to a string
     string cent_text = to_string(fractional_value);
 
     //Get only the part of the string after decimal point
